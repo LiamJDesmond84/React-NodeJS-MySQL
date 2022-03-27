@@ -15,7 +15,7 @@ const NewPost = () => {
     const [username, setUsername] = useState("")
 
 
-    const createAuthor = (e) => {
+    const createPost = (e) => {
         e.preventDefault();
         axios.post("http://localhost:8000/api/posts", {title, description, username})
             .then((res) => {
@@ -38,7 +38,7 @@ const NewPost = () => {
 
             <div className="modern-form">
     
-                <form onSubmit={createAuthor}>
+                <form onSubmit={createPost}>
                 <h4>Add a Post</h4>
                 <fieldset class='float-label-field'>
                 <label for="txtName">Title</label>

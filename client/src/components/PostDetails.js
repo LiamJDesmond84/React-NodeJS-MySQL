@@ -6,16 +6,50 @@ import axios from 'axios';
 const PostDetails = (props) => {
     const { id } = useParams();
     const navigate = useNavigate();
-    // const { id } = props;
+    const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false);
     const [post, setPost] = useState({})
-    // const [oneProduct, setOneProduct] = useState({})
+
+    const [errors, setErrors] = useState({});
+    const [comments, setComments] = useState([]);
+    const [comment, setComment] = useState("")
+    const PostId = id;
+
+
+
+    const createComment = (e) => {
+        e.preventDefault();
+        axios.post("http://localhost:8000/api/comments", {comment, PostId})
+            .then((res) => {
+                console.log(res);
+                setComment("");
+                setHasBeenSubmitted(!hasBeenSubmitted)
+                // navigate(`/posts/${id}`);
+                // setHasBeenSubmitted(!hasBeenSubmitted);
+                })
+            .catch((err) => {
+            // console.log(err.response.data.errors[0]);
+            setErrors(err.response.data.errors[0])});
+            console.log(errors);
+
+            
+        };
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/posts/byId/${id}`)
-            .then(res => {console.log(res.data);
+            .then(res => {
+                console.log(res.data);
                 setPost(res.data);})
-            .catch(err => {console.log(err);navigate('/error');})
-    }, [id])
+            .catch(err => {console.log(err);})
+    
+        axios.get(`http://localhost:8000/api/comments/byId/${id}`)
+            .then(res => {
+                console.log(res.data);
+                setComments(res.data);
+                })
+            .catch(err => {console.log(err);})
+
+    }, [hasBeenSubmitted]);
+
     return (
         <div className="postPage">
             <div className="leftSide">
@@ -25,7 +59,37 @@ const PostDetails = (props) => {
                     <div className="footer">{post.username}</div>
                 </div>
             </div>
-        <div className="rightSide">Comment Section</div>
+        <div className="rightSide">Comment Section
+        <div className="modern-form">
+        <div className="addCommentContainer">
+                <form onSubmit={createComment}>
+                <h4>Add a Comment</h4>
+                <fieldset class='float-label-field'>
+                <label for="txtName">Comment</label>
+                    <input id="txtName" type="text" name="comment" value={comment} onChange={(e) => setComment(e.target.value)}  />
+                    {
+                        errors.path === "comment"?
+                        <p>{errors.message}</p>
+                        :null
+                    }
+                </fieldset>
+
+                    {/* <input id="txtName" type="hidden" value={PostId} /> */}
+                    <input className="button" type="submit" placeholder="Submit" />
+
+                </form>
+            </div>
+            </div>
+            <div className="listOfComments">
+          {comments.map((x, i) => {
+            return (
+              <div key={i} className="comment">
+                {x.comment}
+              </div>
+            );
+          })}
+        </div>
+            </div>
     </div>
     )
 }
