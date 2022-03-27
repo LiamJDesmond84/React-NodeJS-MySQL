@@ -11,7 +11,7 @@ const PostDetails = (props) => {
     // const [oneProduct, setOneProduct] = useState({})
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/posts/post/${id}`)
+        axios.get(`http://localhost:8000/api/posts/byId/${id}`)
             .then(res => {console.log(res.data);
                 setPost(res.data);})
             .catch(err => {console.log(err);navigate('/error');})
