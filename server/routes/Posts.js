@@ -11,7 +11,7 @@ router.get("/", (req, response) => {
 });
 
 //# Get One
-router.get("/:id", (req, response) => {
+router.get("/post/:id", (req, response) => {
 
     Posts.findByPk(req.params.id)
     .then(post => response.json(post))
