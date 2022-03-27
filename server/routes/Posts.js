@@ -20,6 +20,11 @@ router.get("/post/:id", (req, response) => {
 })
 //# Create One
 router.post("/", (req, response) => {
+    let responseData = {
+        success: false,
+
+        errors: {}
+    };
 
     Posts.create(req.body)
     .then(post => response.json(post))
