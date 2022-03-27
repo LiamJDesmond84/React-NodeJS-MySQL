@@ -6,12 +6,12 @@ const port = 8000;
 const db = require('./models');
 
 app.use(express.json())
-// app.use(cors());
+app.use(cors());
 
 
 const postRouter = require('./routes/Posts');
 
-app.use("/posts", postRouter);
+app.use("/api/posts", postRouter);
 
 
 

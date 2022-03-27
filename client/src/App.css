@@ -13,6 +13,34 @@
   }
 }
 
+.table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+thead tr, th {
+  background-color: white;
+}
+
+tbody:nth-child(even) {
+  background-color: rgb(159, 9, 189);
+  color:rgb(67, 190, 56);
+}
+
+tbody:nth-child(odd) {
+  background-color: rgb(57, 74, 172);
+  color:rgb(67, 190, 56);
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  width: 700px;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
