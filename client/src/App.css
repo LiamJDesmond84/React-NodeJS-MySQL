@@ -16,6 +16,7 @@ body {
 }
 
 .post {
+  background-color: salmon;
   width: 700px;
   height: 300px;
   border-radius: 10px;
@@ -61,6 +62,7 @@ body {
 
 .createPostPage {
   font-family: Arial, Helvetica, sans-serif;
+  background-color: salmon;
   width: 100vw;
   height: 70vh;
   display: flex;
@@ -88,7 +90,7 @@ body {
   font-size: 20px;
 }
 
-.formContainer button {
+.button {
   margin-top: 15px;
   height: 40px;
   border: none;
@@ -173,9 +175,11 @@ table, th, td {
 
 
 .modern-form {
+  background-color: salmon;
+  border-radius: 10%;
   width: 500px;
   margin: 30px auto;
-  background-color:  #fff;
+  /* background-color:  #fff; */
   border: solid 1px #ccc;
   padding: 20px 10px;
 }
@@ -185,6 +189,7 @@ table, th, td {
 }
 
 .float-label-field {
+
   border: none;
   outline: none;
   position: relative;
@@ -194,6 +199,8 @@ table, th, td {
 }
 
 .float-label-field input {
+  background-color: lightskyblue;
+  border-radius: 5px;
   border: none;
   outline: none;
   padding: 5px 5px 8px 0px;

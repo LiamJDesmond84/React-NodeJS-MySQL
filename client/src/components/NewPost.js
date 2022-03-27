@@ -36,9 +36,9 @@ const NewPost = () => {
 
     return (
 
-            <div className="createPostPage">
+            <div className="modern-form">
     
-                <form className="modern-form" onSubmit={createAuthor}>
+                <form onSubmit={createAuthor}>
                 <h4>Add a Post</h4>
                 <fieldset class='float-label-field'>
                 <label for="txtName">Title</label>
@@ -67,8 +67,8 @@ const NewPost = () => {
                         :null
                     }
                 </fieldset>
-                    <input type="submit" placeholder="Submit" />
-                <button onClick={() => navigate("/")}>Cancel</button>
+                    <input className="button" type="submit" placeholder="Submit" />
+                <button className="button" onClick={() => navigate("/")}>Cancel</button>
                 </form>
             </div>
         

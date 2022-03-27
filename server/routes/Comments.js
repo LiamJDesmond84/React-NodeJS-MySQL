@@ -1,20 +1,20 @@
 const express = require("express");
 const router = express.Router();
-const { Posts } = require("../models");
+const { Comments } = require("../models");
 
 //# Get All
 router.get("/", (req, response) => {
 
-    Posts.findAll()
-    .then(posts => response.json(posts))
+    Comments.findAll()
+    .then(Comments => response.json(Comments))
     .catch((err)=>{console.log(err);response.status(400).json(err)})
 });
 
 //# Get One
-router.get("/byId/:id", (req, response) => {
+router.get("/byId/:parentId", (req, response) => {
 
-    Posts.findByPk(req.params.id)
-    .then(post => response.json(post))
+    Comments.findAll({where: { PostId: req.params.parentId }})
+    .then(Comment => response.json(Comment))
     .catch((err)=>{console.log(err);response.status(400).json(err)})
     
 })
@@ -26,8 +26,8 @@ router.post("/", (req, response) => {
     //     errors: {}
     // };
 
-    Posts.create(req.body)
-    .then(post => response.json(post))
+    Comments.create(req.body)
+    .then(Comment => response.json(Comment))
     .catch((err)=>{console.log(err);response.status(400).json(err)})
 
 })
@@ -35,8 +35,8 @@ router.post("/", (req, response) => {
 //# Update One
 router.put("/:id", (req, response) => {
 
-    Posts.update(req.body, { where :{id: req.params.id}}, { multi: true })
-    .then(updatedPost => response.json(updatedPost))
+    Comments.update(req.body, { where :{id: req.params.id}}, { multi: true })
+    .then(updatedComment => response.json(updatedComment))
     .catch((err)=>{console.log(err);response.status(400).json(err)})
     
 })
@@ -44,7 +44,7 @@ router.put("/:id", (req, response) => {
 //# Delete One
 router.delete("/:id", (req, response) => {
 
-    Posts.destroy({ where :{id: req.params.id}}, {truncate: true})
+    Comments.destroy({ where :{id: req.params.id}}, {truncate: true})
     .then(deleteConfirmation => response.json(deleteConfirmation))
     .catch((err)=>{console.log(err);response.status(400).json(err)})
     

@@ -3,7 +3,9 @@ module.exports = (sequelize, DataTypes) => {
     const Posts = sequelize.define("Posts", {
         title: {
             type: DataTypes.STRING,
-            required: [true, "Title is required"],
+            // required: [true, "Title is required"],
+            allowNull: false,
+            required: true,
             notEmpty: true,
             validate: {notEmpty:{msg: 'Title is required'}}
 
@@ -23,6 +25,13 @@ module.exports = (sequelize, DataTypes) => {
 
         },
     })
+
+    Posts.associate = (models) => {
+        Posts.hasMany(models.Comments, {
+            onDelete: "cascade", 
+        })
+    }
+
 
     return Posts
 }
