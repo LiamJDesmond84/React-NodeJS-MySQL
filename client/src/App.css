@@ -6,16 +6,9 @@
   flex-direction: column;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+
+
 
 body {
   margin: 0;
@@ -176,26 +169,58 @@ table, th, td {
   width: 700px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+
+
+.modern-form {
+  width: 500px;
+  margin: 30px auto;
+  background-color:  #fff;
+  border: solid 1px #ccc;
+  padding: 20px 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.modern-form h3 {
+  text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.float-label-field {
+  border: none;
+  outline: none;
+  position: relative;
+  margin: 0 0 20px 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.float-label-field input {
+  border: none;
+  outline: none;
+  padding: 5px 5px 8px 0px;
+  width: 100%;
+  font-size: 18px;
+  border-bottom: solid 1px #efefef;
+}
+
+.float-label-field label {
+  opacity: 0.5;
+  position: absolute;
+  top: 10px;
+  left: 0px;
+  transition: all 0.2s ease;
+  font-size: 18px;
+}
+
+.float-label-field.focus label {
+  color: orange;
+}
+.float-label-field.focus input {
+  border-bottom: solid 1px orange;
+}
+.float-label-field.float label {
+  opacity: 1;
+  top: -8px;
+  font-size: 60%;
+  transition: all 0.2s ease;
+  font-weight: bold;
 }

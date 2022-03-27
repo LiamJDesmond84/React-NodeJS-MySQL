@@ -35,39 +35,45 @@ const NewPost = () => {
         };
 
     return (
-        <div>
+
             <div className="createPostPage">
     
-                <form className="formContainer" onSubmit={createAuthor}>
+                <form className="modern-form" onSubmit={createAuthor}>
                 <h4>Add a Post</h4>
-                    <label>Title</label>
-                    <input type="text" name="title" value={title} onChange={(e) => setTitle(e.target.value)}  />
+                <fieldset class='float-label-field'>
+                <label for="txtName">Title</label>
+                    <input id="txtName" type="text" name="title" value={title} onChange={(e) => setTitle(e.target.value)}  />
                     {
                         errors.path === "title"?
                         <p>{errors.message}</p>
                         :null
                     }
-                    <label>Description</label>
-                    <input type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+                </fieldset>
+                <fieldset class='float-label-field'>
+                <label for="txtName">Description</label>
+                    <input id="txtName" type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
                     {
                         errors.path === "description"?
                         <p>{errors.message}</p>
                         :null
                     }
-                    <label>Created By</label>
-                    <input type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+                </fieldset>
+                <fieldset class='float-label-field'>
+                <label for="txtName">UserName</label>
+                    <input id="txtName" type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)} />
                     {
                         errors.path === "username"?
                         <p>{errors.message}</p>
                         :null
                     }
+                </fieldset>
                     <input type="submit" placeholder="Submit" />
                 <button onClick={() => navigate("/")}>Cancel</button>
                 </form>
             </div>
         
         
-        </div>
+
     )
 }
 

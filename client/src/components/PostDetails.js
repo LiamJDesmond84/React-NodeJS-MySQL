@@ -17,17 +17,16 @@ const PostDetails = (props) => {
             .catch(err => {console.log(err);navigate('/error');})
     }, [id])
     return (
-        <div>
-            <h1>Title:</h1>
-            <p>{post.title}</p>
-            <h1>Description:</h1>
-            <p>{post.description}</p>
-            <h1>Added by:</h1>
-            <p>{post.username}</p>
-
-            <hr/>
-            <h3><Link to="/">Home</Link></h3>
-        </div>
+        <div className="postPage">
+            <div className="leftSide">
+                <div className="post" id="individual">
+                    <div className="title"> {post.title} </div>
+                    <div className="body">{post.description}</div>
+                    <div className="footer">{post.username}</div>
+                </div>
+            </div>
+        <div className="rightSide">Comment Section</div>
+    </div>
     )
 }
 
