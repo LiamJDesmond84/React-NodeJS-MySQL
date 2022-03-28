@@ -11,9 +11,11 @@ app.use(cors());
 
 const postRouter = require('./routes/Posts');
 const commentRouter = require('./routes/Comments');
+const userRouter = require('./routes/Users');
 
 app.use("/api/posts", postRouter);
 app.use("/api/comments", commentRouter);
+app.use("/api/users", userRouter);
 
 
 

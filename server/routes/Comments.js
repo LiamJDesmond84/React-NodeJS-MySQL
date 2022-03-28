@@ -20,11 +20,7 @@ router.get("/byId/:parentId", (req, response) => {
 })
 //# Create One
 router.post("/", (req, response) => {
-    // let responseData = {
-    //     success: false,
 
-    //     errors: {}
-    // };
 
     Comments.create(req.body)
     .then(Comment => response.json(Comment))
