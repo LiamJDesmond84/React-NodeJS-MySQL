@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { Users } = require("../models");
+const bcrypt = require("bcrypt");
 
 //# Get All
 router.get("/", (req, response) => {
@@ -18,14 +19,36 @@ router.get("/byId/:id", (req, response) => {
     .catch((err)=>{console.log(err);response.status(400).json(err)})
     
 })
-//# Create One
-router.post("/", (req, response) => {
+//# REGISTER
+router.post("/register", (req, response) => {
     const { username, password } = req.body;
 
-    Users.create(req.body)
-    .then(user => response.json(user))
-    .catch((err)=>{console.log(err);response.status(400).json(err)})
+    bcrypt.hash(password, 10).then((hash) => {
+        Users.create({
+            username: username,
+            password: hash
+        })
+        .then(user => response.json(user))
+        .catch((err)=>{console.log(err);response.status(400).json(err)})
+    })
 
+})
+
+//# LOGIN
+router.post('/login', async (req, res) => {
+
+    const { username, password } = req.body;
+
+    const user = await Users.findOne({ where: { username: username }});
+
+    if (!user) {
+        res.json({ error: "User doesn't exist" })}
+
+    bcrypt.compare(password, user.password).then((matches) => {
+        if (!matches) res.json({ error: "Invalid User name or Passord"})
+        res.json("Successfully logged in");
+    })
+    
 })
 
 //# Update One
