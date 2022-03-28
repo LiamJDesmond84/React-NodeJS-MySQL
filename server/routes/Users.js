@@ -20,7 +20,7 @@ router.get("/byId/:id", (req, response) => {
 })
 //# Create One
 router.post("/", (req, response) => {
-
+    const { username, password } = req.body;
 
     Users.create(req.body)
     .then(user => response.json(user))
