@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const PostDetails = (props) => {
     const { id } = useParams();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false);
     const [post, setPost] = useState({})
 
@@ -23,8 +23,7 @@ const PostDetails = (props) => {
                 console.log(res);
                 setComment("");
                 setHasBeenSubmitted(!hasBeenSubmitted)
-                // navigate(`/posts/${id}`);
-                // setHasBeenSubmitted(!hasBeenSubmitted);
+                setComments([...comments, comment]);
                 })
             .catch((err) => {
             // console.log(err.response.data.errors[0]);
@@ -59,14 +58,14 @@ const PostDetails = (props) => {
                     <div className="footer">{post.username}</div>
                 </div>
             </div>
-        <div className="rightSide">Comment Section
+        <div className="rightSide">
         <div className="modern-form">
         <div className="addCommentContainer">
                 <form onSubmit={createComment}>
                 <h4>Add a Comment</h4>
-                <fieldset class='float-label-field'>
-                <label for="txtName">Comment</label>
-                    <input id="txtName" type="text" name="comment" value={comment} onChange={(e) => setComment(e.target.value)}  />
+                <fieldset className='float-label-field'>
+
+                    <input type="text" name="comment" value={comment} onChange={(e) => setComment(e.target.value)}  />
                     {
                         errors.path === "comment"?
                         <p>{errors.message}</p>
@@ -81,13 +80,13 @@ const PostDetails = (props) => {
             </div>
             </div>
             <div className="listOfComments">
-          {comments.map((x, i) => {
+            {comments.map((x, i) => {
             return (
-              <div key={i} className="comment">
-                {x.comment}
-              </div>
+                <div key={i} className="comment">
+                    {x.comment}
+                </div>
             );
-          })}
+        })}
         </div>
             </div>
     </div>

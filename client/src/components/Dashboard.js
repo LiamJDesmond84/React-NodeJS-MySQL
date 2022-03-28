@@ -27,7 +27,7 @@ const Dashboard = () => {
         <div>
         {posts.map((x,i) => {
             return (
-            <div>
+            <div key={i}>
                 <Link to="/newPost">Add a Post</Link>
                     <div className="post">
                     <div className="title"> {x.title} </div>
