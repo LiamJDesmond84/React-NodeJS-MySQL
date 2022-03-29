@@ -11,16 +11,16 @@ function App() {
 	return (
 	<Router>
 		<div className="navbar">
-		<Link to="/">Home</Link>
-		<Link to="/login">Login</Link>
+		<Link to="/dashboard">Home</Link>
+		<Link to="/">Login</Link>
 		<Link to="/register">Register</Link>
 		<Link to="/newPost">Add a Post</Link>
 		</div>
     <div className="App">
-	<h1><Link to="/">Home</Link></h1>
+
 		<Routes>
-                    <Route path="/" element={<Dashboard />} />
-                    <Route path="/login" element={<Login />} />
+                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/" element={<Login />} />
                     <Route path="/register" element={<Register />} />
 
                     <Route path="/newPost" element={<NewPost />} />

@@ -51,7 +51,7 @@ router.post('/login', async (req, response) => {
         response.status(400);response.json({ error: "User doesn't exist" })}
 
     bcrypt.compare(password, user.password).then((matches) => {
-        if (!matches) response.status(400);response.json({ error: "Invalid Password" })
+        if (!matches) response.status(400);response.json({ passError: "Invalid Password" })
         response.json("Successfully logged in");
     })
     

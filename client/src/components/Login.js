@@ -21,7 +21,7 @@ const Login = () => {
                 setUsername("");
                 setPassword("");
 
-                navigate("/");
+                navigate("/dashboard");
                 // setHasBeenSubmitted(!hasBeenSubmitted);
                 })
             .catch((err) => {
@@ -38,7 +38,7 @@ const Login = () => {
         <div className="modern-form">
     
         <form onSubmit={loginUser}>
-        <h4>Add a Post</h4>
+        <h4>User Login</h4>
         <label>User Name</label>
         <fieldset className='float-label-field'>
             <input id="txtName" type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)}  />
@@ -53,13 +53,14 @@ const Login = () => {
             <input id="txtName" type="text" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
             {
                 errors?
-                <p>{errors.error}</p>
+                <p>{errors.passError}</p>
                 :null
             }
         </fieldset>
             <input className="button" type="submit" placeholder="Submit" />
         <button className="button" onClick={() => navigate("/")}>Cancel</button>
         </form>
+        <small class="text-muted">Don't Have An Account? <a class="ml-2" href="/register">Register!</a></small>
     </div>
     )
 }

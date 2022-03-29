@@ -25,7 +25,7 @@ const Register = () => {
                 setUsername("");
                 setPassword("");
                 setConfirm("");
-                navigate("/");
+                navigate("/dashboard");
                 // setHasBeenSubmitted(!hasBeenSubmitted);
                 })
             .catch((err) => {
@@ -41,7 +41,7 @@ const Register = () => {
     return         <div className="modern-form">
     
     <form onSubmit={loginUser}>
-    <h4>Add a Post</h4>
+    <h4>Register New User</h4>
     <label>User Name</label>
     <fieldset className='float-label-field'>
         <input id="txtName" type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)}  />
@@ -68,6 +68,7 @@ const Register = () => {
         <input className="button" type="submit" placeholder="Submit" />
     <button className="button" onClick={() => navigate("/")}>Cancel</button>
     </form>
+    <small class="text-muted">Already a User? <a class="ml-2" href="/">Sign In!</a></small>
 </div>
 };
 
