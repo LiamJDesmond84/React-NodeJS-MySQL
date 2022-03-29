@@ -17,6 +17,7 @@ const Login = () => {
         axios.post("http://localhost:8000/api/users/login", {username, password})
             .then((res) => {
                 console.log(res);
+                // console.log("test");
                 setUsername("");
                 setPassword("");
 
@@ -24,8 +25,9 @@ const Login = () => {
                 // setHasBeenSubmitted(!hasBeenSubmitted);
                 })
             .catch((err) => {
+
             console.log(err);
-            setErrors(err.response.data.errors[0])});
+            setErrors(err.response.data)});
             console.log(errors);
 
             
@@ -37,21 +39,21 @@ const Login = () => {
     
         <form onSubmit={loginUser}>
         <h4>Add a Post</h4>
+        <label>User Name</label>
         <fieldset className='float-label-field'>
-        <label htmlFor="txtName">User Name</label>
             <input id="txtName" type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)}  />
             {
-                errors.path === "username"?
-                <p>{errors.message}</p>
+                errors ?
+                <p>{errors.error}</p>
                 :null
             }
         </fieldset>
+        <label>Password</label>
         <fieldset className='float-label-field'>
-        <label htmlFor="txtName">Password</label>
             <input id="txtName" type="text" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
             {
-                errors.path === "password"?
-                <p>{errors.message}</p>
+                errors?
+                <p>{errors.error}</p>
                 :null
             }
         </fieldset>

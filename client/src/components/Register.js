@@ -30,7 +30,7 @@ const Register = () => {
                 })
             .catch((err) => {
             console.log(err.response.data);
-            setErrors(err.response.data.errors[0])});
+            setErrors(err.response.data)});
             console.log(errors);
 
             
@@ -42,26 +42,22 @@ const Register = () => {
     
     <form onSubmit={loginUser}>
     <h4>Add a Post</h4>
+    <label>User Name</label>
     <fieldset className='float-label-field'>
-    <label htmlFor="txtName">User Name</label>
         <input id="txtName" type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)}  />
         {
-            errors.path === "username"?
-            <p>{errors.message}</p>
+            errors?
+            <p>{errors.error}</p>
             :null
         }
     </fieldset>
+    <label>Password</label>
     <fieldset className='float-label-field'>
-    <label htmlFor="txtName">Password</label>
         <input id="txtName" type="text" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        {
-            errors.path === "password"?
-            <p>{errors.message}</p>
-            :null
-        }
+
     </fieldset>
+    <label>Confirm Password</label>
     <fieldset className='float-label-field'>
-    <label htmlFor="txtName">Confirm Password</label>
         <input id="txtName" type="text" name="confirm" value={confirm} onChange={(e) => setConfirm(e.target.value)} />
         {
             passError !== ""?
