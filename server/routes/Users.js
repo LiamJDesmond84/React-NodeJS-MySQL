@@ -35,18 +35,18 @@ router.post("/register", (req, response) => {
 })
 
 //# LOGIN
-router.post('/login', async (req, res) => {
+router.post('/login', async (req, response) => {
 
     const { username, password } = req.body;
 
     const user = await Users.findOne({ where: { username: username }});
 
     if (!user) {
-        res.json({ error: "User doesn't exist" })}
+        response.json({ error: "User doesn't exist" })}
 
     bcrypt.compare(password, user.password).then((matches) => {
-        if (!matches) res.json({ error: "Invalid User name or Passord"})
-        res.json("Successfully logged in");
+        if (!matches) response.json({ error: "Invalid User name or Passord"})
+        response.json("Successfully logged in");
     })
     
 })
