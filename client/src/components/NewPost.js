@@ -40,8 +40,8 @@ const NewPost = () => {
     
                 <form onSubmit={createPost}>
                 <h4>Add a Post</h4>
-                <fieldset class='float-label-field'>
-                <label for="txtName">Title</label>
+                <fieldset className='float-label-field'>
+                <label htmlFor="txtName">Title</label>
                     <input id="txtName" type="text" name="title" value={title} onChange={(e) => setTitle(e.target.value)}  />
                     {
                         errors.path === "title"?
@@ -49,8 +49,8 @@ const NewPost = () => {
                         :null
                     }
                 </fieldset>
-                <fieldset class='float-label-field'>
-                <label for="txtName">Description</label>
+                <fieldset className='float-label-field'>
+                <label htmlFor="txtName">Description</label>
                     <input id="txtName" type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
                     {
                         errors.path === "description"?
@@ -58,8 +58,8 @@ const NewPost = () => {
                         :null
                     }
                 </fieldset>
-                <fieldset class='float-label-field'>
-                <label for="txtName">UserName</label>
+                <fieldset className='float-label-field'>
+                <label htmlFor="txtName">UserName</label>
                     <input id="txtName" type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)} />
                     {
                         errors.path === "username"?

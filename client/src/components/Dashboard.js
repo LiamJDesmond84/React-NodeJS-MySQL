@@ -28,7 +28,7 @@ const Dashboard = () => {
         {posts.map((x,i) => {
             return (
             <div key={i}>
-                <Link to="/newPost">Add a Post</Link>
+                
                     <div className="post">
                     <div className="title"> {x.title} </div>
                     <div className="body">{x.description}</div>
