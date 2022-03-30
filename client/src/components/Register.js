@@ -68,7 +68,7 @@ const Register = () => {
         <input className="button" type="submit" placeholder="Submit" />
     <button className="button" onClick={() => navigate("/")}>Cancel</button>
     </form>
-    <small class="text-muted">Already a User? <a class="ml-2" href="/">Sign In!</a></small>
+    <small className="text-muted">Already a User? <a class="ml-2" href="/">Sign In!</a></small>
 </div>
 };
 

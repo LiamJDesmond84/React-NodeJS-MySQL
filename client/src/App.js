@@ -6,6 +6,7 @@ import NewPost from './components/NewPost';
 import PostDetails from './components/PostDetails';
 import Login from './components/Login';
 import Register from './components/Register';
+import UpdatePost from './components/UpdatePost';
 
 function App() {
 	return (
@@ -22,6 +23,7 @@ function App() {
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/" element={<Login />} />
                     <Route path="/register" element={<Register />} />
+                    <Route path="/posts/edit/:id" element={<UpdatePost />} />
 
                     <Route path="/newPost" element={<NewPost />} />
 					<Route path="/posts/:id" element={<PostDetails />} />
