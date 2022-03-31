@@ -13,7 +13,7 @@ const Register = () => {
     const [password, setPassword] = useState("")
     const [confirm, setConfirm] = useState("")
 
-    const loginUser = (e) => {
+    const registerUser = (e) => {
         e.preventDefault();
         if (password !== confirm) {
             setPasserror("Password & Confirm Password must match");
@@ -40,7 +40,7 @@ const Register = () => {
 
     return         <div className="modern-form">
     
-    <form onSubmit={loginUser}>
+    <form onSubmit={registerUser}>
     <h4>Register New User</h4>
     <label>User Name</label>
     <fieldset className='float-label-field'>
